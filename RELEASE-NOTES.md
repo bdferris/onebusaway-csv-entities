@@ -1,0 +1,65 @@
+# Release Notes
+
+## 1.1.4
+
+* Minor bug fixes.
+
+## 1.1.3
+
+* Initial support for "extensions".  Extensions allow a user of a
+CSV-entity-based library to read and write additional data fields that
+were not original defined in the schema of library entities, without
+having to modify the library entities source code.
+
+## 1.1.2
+
+* Support for parsing CSV-like data with arbitrary separator
+character, still handling escaping and quoting properly.  This basically
+involves making the existing parsing code in CSVLibrary more general.
+* Allow the creation of the IndividualCsvEntityReader to be overriden by
+sub-classes for custom behavior.
+* Allow DecimalFieldMappingFactory to specify a Locale to use for parsing
+and formatting decimal fields.
+
+## 1.1.1
+
+* Trim initial whitespace when parsing CSV
+
+* Support for including optional column in output CSV even when no values have been specified  - [issue #3](https://github.com/OneBusAway/onebusaway-csv-entities/issues/3)
+* Add support for capitalized camel-case CSV field naming conventions (eg. "TheFieldName").
+* Show a more useful value for file path when throwing a CsvEntityIOException.
+* Some minor bug fixes and functionality tweaks.
+
+## 1.1.0
+
+* Support for more natural field order in header when writing CSV file - [issue #1](https://github.com/OneBusAway/onebusaway-csv-entities/issues/1)
+* Support for excluding optional columns when no values are specified - [issue #2](https://github.com/OneBusAway/onebusaway-csv-entities/issues/2)
+* Support for trimming initial whitespace from quoted CSV values (eg. 'a,b,  "c",d').  This includes
+  non-backwards-compatible changes to [CSVLibrary](https://github.com/OneBusAway/onebusaway-csv-entities/blob/master/src/main/java/org/onebusaway/csv_entities/CSVLibrary.java).
+
+## 1.0.3
+
+* Add {{{./apidocs/org/onebusaway/csv_entities/schema/DecimalFieldMappingFactory.html}DecimalFieldMappingFactory}}
+  to allow us to control how decimal values are written to CSV using a custom number formatter.
+  
+* Add support to make it easier to read back values from a mysqldump session.  Specifically, see:
+  * {{{./apidocs/org/onebusaway/csv_entities/DelimiterTokenizerStrategy.html#setReplaceLiteralNullValues(boolean)}DelimiterTokenizerStrategy#setReplaceLiteralNullValues()}}
+  * {{{./apidocs/org/onebusaway/csv_entities/schema/EnumFieldMappingFactory.html}EnumFieldMappingFactory}}
+  * {{{./apidocs/org/onebusaway/csv_entities/schema/annotations/CsvFieldNameConvention.html}CsvFieldNameConvention}}
+  * Support for writing GTFS to a ZIP file instead of just an output directory.
+* Migration to GitHub.
+
+## 1.0.2
+
+* Add {{{./apidocs/org/onebusaway/csv_entities/exceptions/InvalidValueEntityException.html}InvalidValueEntityException}}
+* Add direct entity injection to the {{{./apidocs/org/onebusaway/csv_entities/CsvEntityReader.html}CsvEntityReader}}, useful for unit tests and potentially other uses
+* Update the license header to be more flexible
+
+## 1.0.1
+
+* Add {{{./apidocs/org/onebusaway/csv_entities/DelimiterTokenizerStrategy.html}DelimiterTokenizerStrategy}} for specifying an arbitrary delimiter
+* Various tweaks for reading malformed files (empty lines, weird start characters)
+
+## 1.0.0
+
+* Initial creation from original `onebusaway-gtfs` source
